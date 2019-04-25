@@ -10,6 +10,8 @@ RUN apt update && \
     rm -rf /var/lib/apt/lists/* && \
     pip install --no-cache-dir cryptography==2.4.2 ansible
 
+# installing cryptography explicitly (see paramiko/paramiko/pull/1379)
+
 COPY entrypoint.sh /
 
 ENTRYPOINT ["/entrypoint.sh"]

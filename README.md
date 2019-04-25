@@ -29,6 +29,14 @@ action "run ansible" {
 }
 ```
 
+> **TIP**: to disable host key checking, the workflow can define the 
+> `env` varaible:
+>
+>     ANSIBLE_HOST_KEY_CHECKING = "False"
+>
+> This variable is **not** used by the action, but it's read by 
+> Ansible instead.
+
 ### Environment
 
   * `ANSIBLE_GALAXY_FILE`. **Optional** Path to file containing an 
