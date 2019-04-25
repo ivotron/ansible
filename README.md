@@ -4,7 +4,10 @@ Wrapper around [Ansible](https://ansible.com).
 
 ## Usage
 
-The action checks for The entrypoint to the action is the 
+The action checks for a `ANSIBLE_GALAXY_FILE` variable and, if exists, 
+passes its content to `ansible-galaxy` to install dependencies. 
+Dependencies are installed to `$HOME/.ansible`. The entrypoint to the 
+action is the 
 [`ansible-playbook`](https://docs.ansible.com/ansible/2.4/ansible-playbook.html) 
 command.
 
