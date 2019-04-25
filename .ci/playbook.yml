@@ -1,0 +1,6 @@
+- hosts: all
+  roles:
+  - { role: chusiang.helloworld }
+  tasks:
+  - name: test connectivity
+    ping:
