@@ -35,7 +35,10 @@ action "run ansible" {
 >     ANSIBLE_HOST_KEY_CHECKING = "False"
 >
 > This variable is **not** used by the action, but it's read by 
-> Ansible instead.
+> Ansible instead. See the [official 
+> 
+documentation](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#environment-variables) 
+to obtain a list of environment variables that Ansible can read.
 
 ### Environment
 
