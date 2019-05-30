@@ -10,6 +10,8 @@ RUN apt update && \
     rm -rf /var/lib/apt/lists/* && \
     pip install --no-cache-dir cryptography==2.4.2 ansible
 
+ADD ansible.cfg /etc/ansible/
+
 # NOTES:
 # - install cryptography explicitly due to paramiko/paramiko/pull/1379 not being merged yet
 
