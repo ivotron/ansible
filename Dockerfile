@@ -10,7 +10,7 @@ RUN apt update && \
     rm -rf /var/lib/apt/lists/* && \
     pip install --no-cache-dir cryptography==2.4.2 ansible && \
     mkdir /etc/ansible && \
-    bash -c 'echo "ansible_python_interpreter=/usr/bin/env python3" > /etc/ansible/ansible.cfg'
+    bash -c 'echo "[defaults]\nansible_python_interpreter=/usr/bin/env python3" > /etc/ansible/ansible.cfg'
 
 # NOTES:
 # - install cryptography explicitly due to paramiko/paramiko/pull/1379 not being merged yet
