@@ -7,9 +7,7 @@ Wrapper around [Ansible](https://ansible.com).
 The action checks for a `ANSIBLE_GALAXY_FILE` variable and, if exists, 
 passes its content to `ansible-galaxy` to install dependencies. 
 Dependencies are installed to `$HOME/.ansible`. The entrypoint to the 
-action is the 
-[`ansible-playbook`](https://docs.ansible.com/ansible/2.4/ansible-playbook.html) 
-command.
+action is the [`ansible-playbook`][playbook] command.
 
 ### Example workflow
 
@@ -35,16 +33,13 @@ action "run ansible" {
 >     ANSIBLE_HOST_KEY_CHECKING = "False"
 >
 > This variable is **not** used by the action, but it's read by 
-> Ansible instead. See the [official 
-> 
-documentation](https://docs.ansible.com/ansible/latest/reference_appendices/config.html#environment-variables) 
-to obtain a list of environment variables that Ansible can read.
+> Ansible instead. See the [official documentation][docs] to obtain a 
+> list of environment variables that Ansible can read.
 
 ### Environment
 
   * `ANSIBLE_GALAXY_FILE`. **Optional** Path to file containing an 
-    [`ansible-galaxy` requirements 
-    file](https://github.com/ansible/ansible/blob/3b29b502e78c930e61286fcb872fdd2812176121/docs/docsite/rst/reference_appendices/galaxy.rst#installing-multiple-roles-from-a-file).
+    [`ansible-galaxy` requirements file][galaxy].
 
 ### Secrets
 
@@ -57,3 +52,7 @@ to obtain a list of environment variables that Ansible can read.
 
 [MIT](LICENSE). Please see additional information in each 
 subdirectory.
+
+[playbook]: https://docs.ansible.com/ansible/2.4/ansible-playbook.html
+[docs]: https://docs.ansible.com/ansible/latest/reference_appendices/config.html#environment-variables
+[galaxy]: https://github.com/ansible/ansible/blob/3b29b50/docs/docsite/rst/reference_appendices/galaxy.rst#installing-multiple-roles-from-a-file
