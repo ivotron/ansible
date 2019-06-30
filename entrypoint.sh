@@ -10,12 +10,13 @@ echo "$ANSIBLE_SSH_KEY_DATA" | base64 --decode > /tmp/ssh.key
 chmod 400 /tmp/ssh.key
 
 if [ -n "$ANSIBLE_GALAXY_FILE" ] ; then
-  installer=ansible-galaxy
-  if [ -n "$ANSIBLE_USE_MAZER" ]; then
-    installer=mazer
-  fi
-  echo "Installing dependencies via $installer from $ANSIBLE_GALAXY_FILE"
-  $installer install -r "$ANSIBLE_GALAXY_FILE"
+  echo "Installing dependencies via ansible-galaxy from $ANSIBLE_GALAXY_FILE"
+  ansible-galaxy install -r "$ANSIBLE_GALAXY_FILE"
+fi
+
+if [ -n "$ANSIBLE_MAZER_LOCKFILE" ]; then
+  echo "Installing dependencies via mazer from $ANSIBLE_MAZER_LOCKFILE"
+  mazer install --collections-lock "$ANSIBLE_MAZER_LOCKFILE"
 fi
 
 bash -c "ansible-playbook --private-key=/tmp/ssh.key $*"
