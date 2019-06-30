@@ -1,0 +1,5 @@
+.ci/
+README.md
+.travis.yml
+Dockerfile
+.gitignore
