@@ -16,7 +16,7 @@ fi
 
 if [ -n "$ANSIBLE_MAZER_LOCKFILE" ]; then
   echo "Installing dependencies via mazer from $ANSIBLE_MAZER_LOCKFILE"
-  mazer install --collections-lock "$ANSIBLE_MAZER_LOCKFILE"
+  mazer install --lockfile "$ANSIBLE_MAZER_LOCKFILE"
 fi
 
 bash -c "ansible-playbook --private-key=/tmp/ssh.key $*"

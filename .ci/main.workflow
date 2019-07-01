@@ -15,8 +15,8 @@ action "use ansible-galaxy" {
 
 action "use mazer" {
   needs = "use ansible-galaxy"
+  args = "-i .ci/hosts.ini .ci/playbook-with-collections.yml"
   uses = "./"
-  runs = ["sh", "-c", "ansible localhost -m newswangerd.collection_demo.real_facts"]
   env = {
     ANSIBLE_MAZER_LOCKFILE = ".ci/lockfile.yml"
     ANSIBLE_HOST_KEY_CHECKING = "False"
