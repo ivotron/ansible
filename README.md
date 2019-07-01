@@ -5,10 +5,9 @@ Wrapper around [Ansible](https://ansible.com).
 ## Usage
 
 The action checks for a `ANSIBLE_GALAXY_FILE` variable and, if exists, 
-passes its content to `ansible-galaxy` to install dependencies (or 
-using `mazer` if `ANSIBLE_MAZER_LOCKFILE` is defined). Dependencies are 
-installed to `$HOME/.ansible`. The entrypoint to the action is the 
-[`ansible-playbook`][playbook] command.
+passes its content to `ansible-galaxy` to install dependencies 
+(`mazer` and `pip` can be used as well; see below). The entrypoint to 
+the action is the [`ansible-playbook`][playbook] command.
 
 ### Example workflow
 
@@ -40,11 +39,15 @@ action "run ansible" {
 ### Environment
 
   * `ANSIBLE_GALAXY_FILE`. **Optional** Path to file containing an 
-    [`ansible-galaxy` requirements file][galaxy].
+    [`ansible-galaxy` requirements file][galaxy]. Dependencies are 
+    installed to `$HOME/.ansible`.
 
   * `ANSIBLE_MAZER_LOCKFILE`. **Optional** Path to 
-    [mazer](https://github.com/ansible/mazer) lockfile to install galaxy 
-    content.
+    [mazer](https://github.com/ansible/mazer) lockfile to install 
+    galaxy content. Dependencies are installed to `$HOME/.ansible`.
+
+  * `ANSIBLE_PIP_FILE`. **Optional** Path to a `requirements.txt` file 
+    that is passed to `pip install -r`.
 
 ### Secrets
 
