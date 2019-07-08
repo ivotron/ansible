@@ -13,6 +13,14 @@ action "use ansible-galaxy" {
   secrets = ["ANSIBLE_SSH_KEY_DATA"]
 }
 
+# filter and continue only if master branch, as collections
+# are only supported by ansible>=2.8
+action "master branch" {
+  needs = "use ansible-galaxy"
+  uses = "actions/bin/filter@master"
+  args = "branch master"
+}
+
 action "use mazer" {
   needs = "use ansible-galaxy"
   args = "-i .ci/hosts.ini .ci/playbook-with-collections.yml"
