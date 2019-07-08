@@ -1,6 +1,7 @@
 FROM python:3.7-slim-stretch
 
 ARG DEBIAN_FRONTEND=noninteractive
+ARG ANSIBLE_VERSION=2.6
 
 ENV PYTHONUNBUFFERED=on
 
@@ -9,7 +10,7 @@ RUN apt update && \
       git-core openssh-client && \
     rm -rf /var/lib/apt/lists/* && \
     pip install --no-cache-dir \
-      cryptography==2.4.2 netaddr ansible mazer
+      cryptography==2.4.2 netaddr ansible=="$ANSIBLE_VERSION" mazer
 
 ADD ansible.cfg /etc/ansible/
 
